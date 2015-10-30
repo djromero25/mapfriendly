@@ -1,11 +1,11 @@
 $(window).load(function() {
-  loadScript();
+  //loadScript();
 });
 
 var map;
 
 function initialize() {
-        console.log("gmaps")
+        console.log("gmaps");
   var mapOptions = {
           center: new google.maps.LatLng(34.179307, -118.310105),
           zoom: 12,
@@ -100,6 +100,22 @@ function codeAddress(geocoding){
     alert("Search field can't be blank");
   }
 }
+
+handler = Gmaps.build('Google');
+handler.buildMap({ internal: {id: 'one_marker'}}, function(){
+  markers = handler.addMarkers([
+    {
+      lat: 0,
+      lng: 0,
+      picture: {
+        url: "https://addons.cdn.mozilla.net/img/uploads/addon_icons/13/13028-64.png",
+        width:  36,
+        height: 36
+      },
+      infowindow: "hello!"
+    }
+  ]);
+});
 
 function loadScript() {
 	console.log("map loading ...");
