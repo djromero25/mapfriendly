@@ -36,6 +36,10 @@
     <!--map-->
     <div id="map-container">
     	<div id="map-canvas" class="map"></div>
+        <div id="locations" data-locations="[<%= @locations %>]">
+        <% @activities.each do |x| %>
+        <p><%= x.latitude %></p>
+            <% end %>
     </div>
     
     <!--/map-->

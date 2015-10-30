@@ -1,18 +1,22 @@
 function initialize(){
-    handler = Gmaps.build('Google');
-    handler.buildMap({ provider: {}, internal: {id: 'map-canvas'}}, function(){
-        markers = handler.addMarkers([
-            {
-            "lat": 0,
-            "lng": 0,
+    var locs = $('#locations').data('locations');
+    console.log(locs[0][1]);
+    var handler = Gmaps.build('Google');
+    var coords = [];
+    for(var i=0; i<locs[0].length; i++){
+        coords.push({
+            "lat": locs[0][i].latitude,
+            "lng": locs[0][i].longitude,
             "picture": {
             "url": "/assets/icon/01.png",
             "width":  36,
             "height": 36
             },
-            "infowindow": "hello!"
-            }
-        ]);
+            "infowindow": "hello!" 
+        });
+    }
+    handler.buildMap({ provider: {}, internal: {id: 'map-canvas'}}, function(){
+        markers = handler.addMarkers(coords);
         handler.bounds.extendWith(markers);
         handler.fitMapToBounds();
     });
