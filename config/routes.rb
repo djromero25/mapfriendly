@@ -21,9 +21,9 @@ Rails.application.routes.draw do
     delete 'activities/:id' => 'activities#destroy'
 
     # Users #
-    get 'users/new' => 'users#new'
     post 'users' => 'users#create'
     get 'users/:id/edit' => 'users#edit'
+    get 'users/:id' => 'users#show'
     patch 'users/:id' => 'users#update'
     delete 'users/:id' => 'users#destroy'
 
